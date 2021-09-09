@@ -7,7 +7,10 @@ import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
 import au.com.dius.pact.provider.junitsupport.target.Target;
 import au.com.dius.pact.provider.junitsupport.target.TestTarget;
+import br.nom.penha.bruno.treino.pact.taskbackend.TaskBackendApplication;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.springframework.boot.SpringApplication;
 
 @RunWith(PactRunner.class)
 @Provider("Tarefas")
@@ -16,6 +19,12 @@ public class ProvedorTarefasTest {
 
     @TestTarget
     public final Target alvo = new HttpTarget("localhost",8000);
+
+    @BeforeClass
+    public static void inicializacao(){
+        // Inicializo o Springboot
+        SpringApplication.run(TaskBackendApplication.class);
+    }
 
     @State("Existe uma tarefa com o id = 1")
     public void povoarTarefa1NoProvedor(){

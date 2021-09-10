@@ -1,6 +1,8 @@
 package br.nom.penha.bruno.treino.pact.taskbackend.controller;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,5 +69,14 @@ public class TaskController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Task> getById(@PathVariable Long id) {
 		return new ResponseEntity<Task>(todoRepo.get(id), HttpStatus.OK);
+	}
+
+
+	@PostMapping(value = "/pactStateChange")
+	public void mudancaEstadoPacto(@RequestBody Map<String, Object> corpo){
+	    String estado = (String) corpo.get("state");
+	    if(estado.equals("Existe uma tarefa com o id = 1")){
+	        todoRepo.update(new Task(1L,"Tarefa #1", LocalDate.now()));
+        }
 	}
 }

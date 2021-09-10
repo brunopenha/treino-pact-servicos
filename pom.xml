@@ -56,9 +56,14 @@
                             <host>localhost</host>
                             <port>8000</port>
                             <path>/</path>
-                            <pactFileDirectory>src/test/resources/pact_json</pactFileDirectory>
                         </serviceProvider>
                     </serviceProviders>
+                    <pactBrokerUrl>http://localhost:9080/</pactBrokerUrl>
+                    <pactBrokerUsername>user1</pactBrokerUsername>
+                    <pactBrokerPassword>userpasswd</pactBrokerPassword>
+                    <configuration>
+                        <pact.verifier.publishResults>true</pact.verifier.publishResults>
+                    </configuration>
                     <trimSnapshot>true</trimSnapshot>
                 </configuration>
             </plugin>
